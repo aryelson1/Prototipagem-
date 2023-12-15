@@ -30,23 +30,23 @@ Para integrar o seu bot Telegram ao projeto, você precisará obter o token do b
     
 1. **Crie um novo bot no Telegram:**
     
-   - Abra o aplicativo Telegram e pesquise por [@BotFather](https://t.me/BotFather).
+    - Abra o aplicativo Telegram e pesquise por [@BotFather](https://t.me/BotFather).
     - Inicie uma conversa com o BotFather e envie o comando `/newbot` para criar um novo bot.
     
-    2. **Siga as instruções do BotFather:**
+2. **Siga as instruções do BotFather:**
     
-       - O BotFather solicitará um nome para o seu bot. Escolha um nome adequado para o seu projeto.
-       - Em seguida, o BotFather solicitará um nome de usuário para o bot. Este deve ser único e terminar com "bot" (por exemplo, `meubotalarme_bot`).
-       - Após a conclusão, o BotFather fornecerá uma mensagem com o token do seu bot. O token será algo parecido com `1234567890:ABCDEFGHIJKLMNOPQRSTUVWX`.
+    - O BotFather solicitará um nome para o seu bot. Escolha um nome adequado para o seu projeto.
+    - Em seguida, o BotFather solicitará um nome de usuário para o bot. Este deve ser único e terminar com "bot" (por exemplo, `meubotalarme_bot`).
+    - Após a conclusão, o BotFather fornecerá uma mensagem com o token do seu bot. O token será algo parecido com `1234567890:ABCDEFGHIJKLMNOPQRSTUVWX`.
     
-    3. **Guarde o Token do Bot:**
+3. **Guarde o Token do Bot:**
     
-       - Copie o token fornecido pelo BotFather.
-       - Substitua a variável `bot_token` no seu script pelo token que você acabou de copiar.
+    - Copie o token fornecido pelo BotFather.
+    - Substitua a variável `bot_token` no seu script pelo token que você acabou de copiar.
     
-    Agora, você tem o token do seu bot e pode usá-lo no seu projeto. Certifique-se de manter o token do bot em um local seguro e não o compartilhe publicamente.
-    
-    **Observação:** Mantenha seu token em segredo, pois ele é essencial para a integração do seu bot com o Telegram.
+Agora, você tem o token do seu bot e pode usá-lo no seu projeto. Certifique-se de manter o token do bot em um local seguro e não o compartilhe publicamente.
+
+**Observação:** Mantenha seu token em segredo, pois ele é essencial para a integração do seu bot com o Telegram.
 
 2. **Lista de IDs dos Usuários:**
    Atualize a lista `lista_id` com os IDs reais dos usuários para os quais você deseja enviar mensagens e vídeos.
