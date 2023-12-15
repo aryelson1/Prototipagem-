@@ -1,4 +1,12 @@
 # Prototipagem
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raspberry Pi Telegram Alarm System</title>
+</head>
+<body>
 
     <h1>Raspberry Pi Telegram Alarm System</h1>
 
@@ -45,7 +53,7 @@
 
     <p>O script ficará aguardando o acionamento do sensor de movimento. Quando o sensor detectar movimento, ele enviará uma mensagem e um vídeo via Telegram para os usuários configurados.</p>
 
-    <h2>Autores</h2>
+    <h2>Autor</h2>
 
     <p>Aryelson Gonçalves</p>
     <p>Antônio Roberto</p>
@@ -53,3 +61,6 @@
     <h2>Licença</h2>
 
     <p>Este projeto está licenciado sob a <a href="LICENSE" target="_blank">Licença MIT</a>.</p>
+
+</body>
+</html>
