@@ -13,15 +13,16 @@ Certifique-se de ter as seguintes bibliotecas instaladas:
 - [python-telegram-bot](https://python-telegram-bot.readthedocs.io/en/stable/)
 - [ffmpeg](https://www.ffmpeg.org/)
 
-Você pode instalar essas dependências usando o seguinte comando:
+1. Você pode instalar essas dependências usando o seguinte comando:
 
       ```bash
       pip install RPi.GPIO gpiozero python-telegram-bot
 
-Além disso, o script usa o módulo ffmpeg para gravação de vídeos. Certifique-se de que o ffmpeg esteja instalado na sua Raspberry Pi. Você pode instalá-lo com o seguinte comando:
+2. Além disso, o script usa o módulo ffmpeg para gravação de vídeos. Certifique-se de que o ffmpeg esteja instalado na sua Raspberry Pi. Você pode instalá-lo com o seguinte comando:
 
       ```bash
       sudo apt-get install ffmpeg
+      
 
 # Como Obter o Token do Bot no Telegram
 
