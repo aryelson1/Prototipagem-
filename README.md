@@ -76,11 +76,10 @@ Agora, você tem o token do seu bot e pode usá-lo no seu projeto. Certifique-se
    ```bash
    python alarm_system.py
 
-## Autor
+## Autores
 
+- Antonio Roberto(https://github.com/antoniojunior2222)
 - Aryelson Gonçalves(https://github.com/aryelson1)
-- Antônio Roberto(https://github.com/antoniojunior2222)
-
 
 ## Licença
 
