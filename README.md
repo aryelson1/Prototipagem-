@@ -2,7 +2,7 @@
 
 # Raspberry Pi Telegram Alarm System
 
-Este projeto implementa um sistema de alarme usando uma Raspberry Pi, um sensor de presença e a biblioteca `python-telegram-bot` para enviar mensagens e vídeos via Telegram quando o sensor é acionado.
+Este projeto implementa um sistema de alarme usando uma Raspberry Pi, um Sensor De Presença Pir Infravermelho HC-SR501 e a biblioteca `python-telegram-bot` para enviar mensagens e vídeos via Telegram quando o sensor é acionado.
 
 ## Requisitos
 
