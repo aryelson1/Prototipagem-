@@ -76,8 +76,9 @@ Agora, você tem o token do seu bot e pode usá-lo no seu projeto. Certifique-se
 
 ## Autor
 
-[Aryelson Gonçalves]
-[Antônio Roberto ]
+- Aryelson Gonçalves(https://github.com/aryelson1)
+- Antônio Roberto(https://github.com/antoniojunior2222)
+
 
 ## Licença
 
