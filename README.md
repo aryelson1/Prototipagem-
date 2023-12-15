@@ -1,66 +1,85 @@
 # Prototipagem
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raspberry Pi Telegram Alarm System</title>
-</head>
-<body>
 
-    <h1>Raspberry Pi Telegram Alarm System</h1>
+# Raspberry Pi Telegram Alarm System
 
-    <p>Este projeto implementa um sistema de alarme usando uma Raspberry Pi, um sensor de movimento e a biblioteca <code>python-telegram-bot</code> para enviar mensagens e vídeos via Telegram quando o sensor é acionado.</p>
+Este projeto implementa um sistema de alarme usando uma Raspberry Pi, um sensor de movimento e a biblioteca `python-telegram-bot` para enviar mensagens e vídeos via Telegram quando o sensor é acionado.
 
-    <h2>Requisitos</h2>
+## Requisitos
 
-    <p>Certifique-se de ter as seguintes bibliotecas instaladas:</p>
+Certifique-se de ter as seguintes bibliotecas instaladas:
 
-    <ul>
-        <li><a href="https://pypi.org/project/RPi.GPIO/" target="_blank">RPi.GPIO</a></li>
-        <li><a href="https://gpiozero.readthedocs.io/en/stable/" target="_blank">gpiozero</a></li>
-        <li><a href="https://python-telegram-bot.readthedocs.io/en/stable/" target="_blank">python-telegram-bot</a></li>
-        <li><a href="https://www.ffmpeg.org/" target="_blank">ffmpeg</a></li>
-    </ul>
+- [RPi.GPIO](https://pypi.org/project/RPi.GPIO/)
+- [gpiozero](https://gpiozero.readthedocs.io/en/stable/)
+- [python-telegram-bot](https://python-telegram-bot.readthedocs.io/en/stable/)
+- [ffmpeg](https://www.ffmpeg.org/)
 
-    <p>Você pode instalar essas dependências usando o seguinte comando:</p>
+Você pode instalar essas dependências usando o seguinte comando:
 
-    <pre><code>pip install RPi.GPIO gpiozero python-telegram-bot</code></pre>
+    ```bash
+    pip install RPi.GPIO gpiozero python-telegram-bot
 
-    <p>Além disso, o script usa o módulo <code>ffmpeg</code> para gravação de vídeos. Certifique-se de que o <code>ffmpeg</code> esteja instalado na sua Raspberry Pi. Você pode instalá-lo com o seguinte comando:</p>
+Além disso, o script usa o módulo ffmpeg para gravação de vídeos. Certifique-se de que o ffmpeg esteja instalado na sua Raspberry Pi. Você pode instalá-lo com o seguinte comando:
 
-    <pre><code>sudo apt-get install ffmpeg</code></pre>
+## Configuração
 
-    <h2>Configuração</h2>
+1. **Token do Bot Telegram:**
+   Substitua a variável `bot_token` no script pelo token real do seu bot Telegram.
+# Como Obter o Token do Bot no Telegram
 
-    <ol>
-        <li><strong>Token do Bot Telegram:</strong><br>Substitua a variável <code>bot_token</code> no script pelo token real do seu bot Telegram.</li>
-        <li><strong>Lista de IDs dos Usuários:</strong><br>Atualize a lista <code>lista_id</code> com os IDs reais dos usuários para os quais você deseja enviar mensagens e vídeos.</li>
-        <li><strong>Caminho do Arquivo de Saída:</strong><br>Substitua <code>output_file</code> pelo caminho real do arquivo de vídeo que será enviado.</li>
-        <li><strong>Duração do Vídeo:</strong><br>Ajuste a variável <code>duration</code> para a duração desejada do vídeo em segundos.</li>
-    </ol>
+    Para integrar o seu bot Telegram ao projeto, você precisará obter o token do bot. Siga as etapas abaixo para criar um novo bot no Telegram e obter o token necessário.
+    
+    1. **Crie um novo bot no Telegram:**
+    
+       - Abra o aplicativo Telegram e pesquise por [@BotFather](https://t.me/BotFather).
+       - Inicie uma conversa com o BotFather e envie o comando `/newbot` para criar um novo bot.
+    
+    2. **Siga as instruções do BotFather:**
+    
+       - O BotFather solicitará um nome para o seu bot. Escolha um nome adequado para o seu projeto.
+       - Em seguida, o BotFather solicitará um nome de usuário para o bot. Este deve ser único e terminar com "bot" (por exemplo, `meubotalarme_bot`).
+       - Após a conclusão, o BotFather fornecerá uma mensagem com o token do seu bot. O token será algo parecido com `1234567890:ABCDEFGHIJKLMNOPQRSTUVWX`.
+    
+    3. **Guarde o Token do Bot:**
+    
+       - Copie o token fornecido pelo BotFather.
+       - Substitua a variável `bot_token` no seu script pelo token que você acabou de copiar.
+    
+    Agora, você tem o token do seu bot e pode usá-lo no seu projeto. Certifique-se de manter o token do bot em um local seguro e não o compartilhe publicamente.
+    
+    **Observação:** Mantenha seu token em segredo, pois ele é essencial para a integração do seu bot com o Telegram.
 
-    <h2>Como Usar</h2>
+2. **Lista de IDs dos Usuários:**
+   Atualize a lista `lista_id` com os IDs reais dos usuários para os quais você deseja enviar mensagens e vídeos.
 
-    <ol>
-        <li>Clone este repositório na sua Raspberry Pi:</li>
-        <pre><code>git clone https://github.com/seu-usuario/raspberry-pi-telegram-alarm-system.git</code></pre>
-        <li>Navegue até o diretório do projeto:</li>
-        <pre><code>cd raspberry-pi-telegram-alarm-system</code></pre>
-        <li>Execute o script Python:</li>
-        <pre><code>python alarm_system.py</code></pre>
-    </ol>
+3. **Caminho do Arquivo de Saída:**
+   Substitua `output_file` pelo caminho real do arquivo de vídeo que será enviado.
 
-    <p>O script ficará aguardando o acionamento do sensor de movimento. Quando o sensor detectar movimento, ele enviará uma mensagem e um vídeo via Telegram para os usuários configurados.</p>
+4. **Duração do Vídeo:**
+   Ajuste a variável `duration` para a duração desejada do vídeo em segundos.
 
-    <h2>Autor</h2>
+## Como Usar
 
-    <p>Aryelson Gonçalves</p>
-    <p>Antônio Roberto</p>
+1. Clone este repositório na sua Raspberry Pi:
 
-    <h2>Licença</h2>
+   ```bash
+   git clone https://github.com/seu-usuario/raspberry-pi-telegram-alarm-system.git
 
-    <p>Este projeto está licenciado sob a <a href="LICENSE" target="_blank">Licença MIT</a>.</p>
+2. Navegue até o diretório do projeto:
 
-</body>
-</html>
+   ```bash
+   cd raspberry-pi-telegram-alarm-system
+
+3. Execute o script Python:
+
+   ```bash
+   python alarm_system.py
+
+## Autor
+
+[Aryelson Gonçalves]
+[Antônio Roberto ]
+
+## Licença
+
+Este projeto está licenciado sob a [Licença MIT](LICENSE).
+
