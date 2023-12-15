@@ -24,8 +24,8 @@ Além disso, o script usa o módulo ffmpeg para gravação de vídeos. Certifiqu
 
 1. **Token do Bot Telegram:**
    Substitua a variável `bot_token` no script pelo token real do seu bot Telegram.
+   
 # Como Obter o Token do Bot no Telegram
-
 Para integrar o seu bot Telegram ao projeto, você precisará obter o token do bot. Siga as etapas abaixo para criar um novo bot no Telegram e obter o token necessário.
     
 1. **Crie um novo bot no Telegram:**
