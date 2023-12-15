@@ -26,12 +26,12 @@ Além disso, o script usa o módulo ffmpeg para gravação de vídeos. Certifiqu
    Substitua a variável `bot_token` no script pelo token real do seu bot Telegram.
 # Como Obter o Token do Bot no Telegram
 
-    Para integrar o seu bot Telegram ao projeto, você precisará obter o token do bot. Siga as etapas abaixo para criar um novo bot no Telegram e obter o token necessário.
+Para integrar o seu bot Telegram ao projeto, você precisará obter o token do bot. Siga as etapas abaixo para criar um novo bot no Telegram e obter o token necessário.
     
-    1. **Crie um novo bot no Telegram:**
+1. **Crie um novo bot no Telegram:**
     
-       - Abra o aplicativo Telegram e pesquise por [@BotFather](https://t.me/BotFather).
-       - Inicie uma conversa com o BotFather e envie o comando `/newbot` para criar um novo bot.
+   - Abra o aplicativo Telegram e pesquise por [@BotFather](https://t.me/BotFather).
+    - Inicie uma conversa com o BotFather e envie o comando `/newbot` para criar um novo bot.
     
     2. **Siga as instruções do BotFather:**
     
