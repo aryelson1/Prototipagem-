@@ -64,7 +64,7 @@ Agora, você tem o token do seu bot e pode usá-lo no seu projeto. Certifique-se
 1. Clone este repositório na sua Raspberry Pi:
 
    ```bash
-   git clone https://github.com/seu-usuario/raspberry-pi-telegram-alarm-system.git
+   git clone https://github.com/aryelson1/raspberry-pi-telegram-alarm-system.git
 
 2. Navegue até o diretório do projeto:
 
