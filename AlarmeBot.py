@@ -1,29 +1,45 @@
-import RPi.GPIO as GPIO
-import time
-import asyncio
-import subprocess
-from telegram import Bot
-from telegram import InputFile
-from gpiozero import MotionSensor
+"""
+Sistema de Alarme com Raspberry Pi e Telegram
+
+Este script monitora um sensor de movimento usando uma Raspberry Pi e envia uma mensagem e um vídeo
+via Telegram quando o sensor é acionado.
+
+Dependências:
+- RPi.GPIO
+- gpiozero
+- python-telegram-bot
+- ffmpeg
+
+Certifique-se de instalar essas bibliotecas antes de executar o script.
+
+Autor: [Seu Nome/Autor]
+
+"""
+
+# Importação de módulos necessários
+import RPi.GPIO as GPIO  # Módulo para interagir com os pinos GPIO da Raspberry Pi
+import time  # Módulo para manipulação de tempo
+import asyncio  # Módulo para suportar programação assíncrona
+import subprocess  # Módulo para executar subprocessos
+from telegram import Bot  # Classe Bot da biblioteca python-telegram-bot para interagir com a API do Telegram
+from telegram import InputFile  # Classe InputFile para representar um arquivo a ser enviado ao Telegram
+from gpiozero import MotionSensor  # Módulo gpiozero para interagir com o sensor de movimento
 
 # Configuração do bot
-bot_token = '6960608001:AAHmE8CE5xRhHkgHMUl-s_G_6UdRnWQOTSQ'  # Token do Bot
-lista_id = [ '5201121335','1622322437']  # ID dos usuários '1622322437',
-output_file = "/home/assert/Desktop/protAlarme/Aviso.mp4"  # Caminho do Arquivo
+bot_token = 'SEU_TOKEN_DO_BOT'  # Substitua pelo token real do seu bot
+lista_id = ['ID_USUARIO_1', 'ID_USUARIO_2']  # Substitua pelos IDs reais dos usuários
+output_file = "/caminho/para/o/arquivo/Aviso.mp4"  # Substitua pelo caminho real do arquivo
 duration = 10  # Duração do vídeo em segundos
-#parte do instagram
-#######
-
-'''login = 'gabriel_alves778' #Usuario
-senha = 'AulaInsta' #Senha
-cl = Client()
-cl.login(login, senha)
-user_id_destinatario = cl.user_id_from_username('lucasdaris_ec')    # Destinatario'''
-########## quando voces chegarem coloquem a funcao cl.logout() no final do codigo tambem. Obrigado
 
 def record_video(output_file, duration):
+    """
+    Grava um vídeo usando o ffmpeg.
+
+    Parâmetros:
+    - output_file: Caminho do arquivo de saída.
+    - duration: Duração do vídeo em segundos.
+    """
     try:
-        # Comando para gravar um vídeo usando o ffmpeg
         command = [
             "ffmpeg",
             "-y",
@@ -36,10 +52,7 @@ def record_video(output_file, duration):
             "-vcodec", "copy",
             output_file
         ]
-
-        # Executa o comando
-        subprocess.run(command, check=True)
-
+        subprocess.run(command, check=True)  # Executa o comando ffmpeg para gravar o vídeo
         print(f"Vídeo gravado e salvo em {output_file}")
     except subprocess.CalledProcessError as e:
         print(f"Erro ao gravar vídeo: {e}")
@@ -47,34 +60,31 @@ def record_video(output_file, duration):
         print(f"Ocorreu um erro inesperado: {e}")
 
 async def enviar_mensagem():
-    # Criando o bot
-    bot = Bot(token=bot_token)
+    """
+    Envia uma mensagem e um vídeo via Telegram.
 
-    # Mensagem
+    A mensagem e o vídeo são enviados para todos os usuários na lista_id.
+    """
+    bot = Bot(token=bot_token)  # Cria uma instância do bot
     mensagem = 'ALARME ACIONADO'
-
-    # Video
-    record_video(output_file, duration)
-
-    # Envio da mensagem
-    for i in lista_id:
-        await bot.send_message(chat_id=i, text=mensagem)
-        #result = cl.direct_send(mensagem, user_ids=[user_id_destinatario]) # envia msg do instagram
+    record_video(output_file, duration)  # Grava o vídeo
+    for user_id in lista_id:
+        await bot.send_message(chat_id=user_id, text=mensagem)  # Envia a mensagem para cada usuário na lista
         video = open(output_file, "rb")
-        await bot.send_video(chat_id=i, video=InputFile(video))
+        await bot.send_video(chat_id=user_id, video=InputFile(video))  # Envia o vídeo para cada usuário na lista
         video.close()
 
 async def main():
-    pir = MotionSensor(17)
-
+    """
+    Função principal que monitora o sensor de movimento e aciona o envio de mensagem e vídeo.
+    """
+    pir = MotionSensor(17)  # Cria uma instância do sensor de movimento
     while True:
-        pir.wait_for_motion()
+        pir.wait_for_motion()  # Aguarda até que o sensor detecte movimento
         if pir.motion_detected:
-            await enviar_mensagem()
-            await asyncio.sleep(15)
+            await enviar_mensagem()  # Chama a função para enviar mensagem e vídeo
+            await asyncio.sleep(15)  # Aguarda 15 segundos antes de continuar o loop
 
-
-
-# Roda o loop principal
+# Executa o loop principal
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(main())  # Inicia o loop principal usando asyncio
