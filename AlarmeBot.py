@@ -12,7 +12,8 @@ Dependências:
 
 Certifique-se de instalar essas bibliotecas antes de executar o script.
 
-Autor: [Seu Nome/Autor]
+Autores: Antonio Roberto
+       Aryelson Gonçalves 
 
 """
 
@@ -26,9 +27,9 @@ from telegram import InputFile  # Classe InputFile para representar um arquivo a
 from gpiozero import MotionSensor  # Módulo gpiozero para interagir com o sensor de movimento
 
 # Configuração do bot
-bot_token = 'SEU_TOKEN_DO_BOT'  # Substitua pelo token real do seu bot
-lista_id = ['ID_USUARIO_1', 'ID_USUARIO_2']  # Substitua pelos IDs reais dos usuários
-output_file = "/caminho/para/o/arquivo/Aviso.mp4"  # Substitua pelo caminho real do arquivo
+bot_token = 'SEU_TOKEN_DO_BOT'  # Substitua pelo token real do seu bot Ex: 6960608001:AAHmE8CE5xRhHkgHMUl-s_G_6UdRnWQOTSQ
+lista_id = ['ID_USUARIO_1', 'ID_USUARIO_2']  # Substitua pelos IDs reais dos usuários Ex: 1622322437
+output_file = "/caminho/para/o/arquivo/Aviso.mp4"  # Substitua pelo caminho real do arquivo Ex: /home/assert/Desktop/protAlarme/Aviso.mp4
 duration = 10  # Duração do vídeo em segundos
 
 def record_video(output_file, duration):
@@ -39,25 +40,36 @@ def record_video(output_file, duration):
     - output_file: Caminho do arquivo de saída.
     - duration: Duração do vídeo em segundos.
     """
+    
     try:
+        # Comando para capturar vídeo da câmera usando ffmpeg
         command = [
-            "ffmpeg",
-            "-y",
-            "-f", "v4l2",
-            "-input_format", "h264",
-            "-video_size", "1920x1080",
-            "-framerate", "30",
-            "-i", "/dev/video0",
-            "-t", str(duration),
-            "-vcodec", "copy",
-            output_file
+            "ffmpeg",              # Executável ffmpeg
+            "-y",                  # Sobrescreve o arquivo de saída, se existir
+            "-f", "v4l2",          # Formato de entrada: v4l2 (Video for Linux Two)
+            "-input_format", "h264",  # Formato de entrada do vídeo H.264
+            "-video_size", "1920x1080",  # Resolução do vídeo: 1920x1080 pixels
+            "-framerate", "30",    # Taxa de quadros: 30 frames por segundo
+            "-i", "/dev/video0",  # Dispositivo de vídeo de entrada (pode variar)
+            "-t", str(duration),   # Duração da gravação em segundos
+            "-vcodec", "copy",     # Usa o mesmo codec de vídeo de entrada para a saída
+            output_file            # Caminho do arquivo de saída
         ]
-        subprocess.run(command, check=True)  # Executa o comando ffmpeg para gravar o vídeo
+
+        # Executa o comando ffmpeg para gravar o vídeo
+        subprocess.run(command, check=True)
+        
+        # Mensagem de sucesso
         print(f"Vídeo gravado e salvo em {output_file}")
+
     except subprocess.CalledProcessError as e:
+        # Trata erro se o subprocesso falhar
         print(f"Erro ao gravar vídeo: {e}")
+
     except Exception as e:
+        # Trata erros inesperados
         print(f"Ocorreu um erro inesperado: {e}")
+
 
 async def enviar_mensagem():
     """
@@ -73,6 +85,7 @@ async def enviar_mensagem():
         video = open(output_file, "rb")
         await bot.send_video(chat_id=user_id, video=InputFile(video))  # Envia o vídeo para cada usuário na lista
         video.close()
+
 
 async def main():
     """
