@@ -23,7 +23,6 @@ Certifique-se de ter as seguintes bibliotecas instaladas:
       ```bash
       sudo apt-get install ffmpeg
       
-
 # Como Obter o Token do Bot no Telegram
 
 Para integrar o seu bot Telegram ao projeto, você precisará obter o token do bot. Siga as etapas abaixo para criar um novo bot no Telegram e obter o token necessário.
